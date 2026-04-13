@@ -1,0 +1,12 @@
+2. Nível Intermediário: Termômetro com Protocolo I2C e Display
+Aqui o foco é comunicação entre integrados. Quase todo sensor profissional usa I2C ou SPI.
+
+Objetivo: Ler a temperatura de um sensor (ex: BMP280 ou AHT20) e exibir em um Display OLED SSD1306.
+
+Conceitos Chave:
+
+Protocolo I2C: Endereçamento de dispositivos e registros.
+
+Bibliotecas de Abstração: Uso de bibliotecas como Adafruit_SSD1306 e Wire.h.
+
+Manipulação de Strings em C: Formatar os dados para exibição (uso de snprintf).

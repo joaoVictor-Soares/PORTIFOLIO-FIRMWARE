@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "author": "João Victor da Silva Neves Soares",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 153.6, "left": -14.36, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -9.3, "left": -15, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 179.2,
+      "left": 140,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "dht1:GND", "black", [ "h-47.85", "v-38.4" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v-86.4", "h76.8" ] ],
+    [ "esp:4", "dht1:SDA", "green", [ "h0" ] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "esp:5V", "lcd1:VCC", "red", [ "h0" ] ],
+    [ "esp:21", "lcd1:SDA", "green", [ "h0" ] ],
+    [ "esp:22", "lcd1:SCL", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
