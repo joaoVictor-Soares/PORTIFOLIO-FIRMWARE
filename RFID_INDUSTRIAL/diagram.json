@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "author": "João Victor da Silva Neves Soares - Integrado",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -96, "left": -167.96, "attrs": {} },
+    { "type": "board-mfrc522", "id": "rfid1", "top": -261.85, "left": 109.04, "attrs": {} },
+    { "type": "wokwi-breadboard", "id": "bb1", "top": -79.8, "left": 137.2, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 156.74,
+      "left": 297.83,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -51.6,
+      "left": 301.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -51.6,
+      "left": 349.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 33.6,
+      "left": 287.45,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 33.6,
+      "left": 335.45,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 151.6, "left": 499.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "rfid1:3.3V", "esp:3V3", "red", [ "h0" ] ],
+    [ "rfid1:RST", "esp:22", "orange", [ "h0" ] ],
+    [ "rfid1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "rfid1:MISO", "esp:19", "purple", [ "h0" ] ],
+    [ "rfid1:MOSI", "esp:23", "green", [ "h0" ] ],
+    [ "rfid1:SCK", "esp:18", "blue", [ "h0" ] ],
+    [ "rfid1:SDA", "esp:21", "yellow", [ "h0" ] ],
+    [ "esp:5V", "bb1:bp.1", "red", [] ],
+    [ "esp:GND.1", "bb1:bn.1", "black", [] ],
+    [ "oled1:GND", "bb1:bn.10", "black", [] ],
+    [ "oled1:VCC", "bb1:bp.10", "red", [] ],
+    [ "oled1:SDA", "esp:4", "yellow", [] ],
+    [ "oled1:SCL", "esp:5", "white", [] ],
+    [ "led1:C", "r1:1", "black", [] ],
+    [ "led2:C", "r2:1", "black", [] ],
+    [ "led1:A", "esp:25", "green", [ "v0" ] ],
+    [ "led2:A", "esp:26", "green", [ "v0" ] ],
+    [ "bb1:bn.17", "r2:2", "green", [ "v0" ] ],
+    [ "r1:2", "bb1:bn.13", "green", [ "h0" ] ],
+    [ "led1:A", "bb1:18t.c", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:17t.c", "", [ "$bb" ] ],
+    [ "led2:A", "bb1:23t.c", "", [ "$bb" ] ],
+    [ "led2:C", "bb1:22t.c", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:17t.e", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:17b.i", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:22t.e", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:22b.i", "", [ "$bb" ] ],
+    [ "bb1:bn.26", "servo1:GND", "green", [ "v0" ] ],
+    [ "bb1:bp.27", "servo1:V+", "green", [ "v0" ] ],
+    [ "esp:14", "servo1:PWM", "green", [ "h-19.05", "v288", "h672" ] ]
+  ],
+  "dependencies": {}
+}
